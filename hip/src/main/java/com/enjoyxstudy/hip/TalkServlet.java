@@ -63,9 +63,15 @@ public class TalkServlet extends HttpServlet {
             return;
         }
 
+        String prefix = "";
+        if (config.isPrefixRemoteAddress()) {
+            String remoteAddr = request.getRemoteAddr();
+            prefix = ((remoteAddr == null) ? "" : remoteAddr) + ": ";
+        }
+
         String[] messages = message.split("\r\n|\r|\n");
         for (int i = 0; i < messages.length; i++) {
-            sendMessage(messages[i]);
+            sendMessage(prefix + messages[i]);
         }
     }
 

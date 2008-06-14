@@ -45,6 +45,9 @@ public class Config {
     /** use encoding */
     private String encoding = "UTF-8";
 
+    /** prefix remote address */
+    private boolean isPrefixRemoteAddress;
+
     /**
      * @param properties
      */
@@ -62,6 +65,8 @@ public class Config {
                 DEFAULT_OUTPUT_DIR));
         httpPort = Integer.parseInt(properties.getProperty("httpPort", String
                 .valueOf(httpPort)));
+        isPrefixRemoteAddress = "true".equals(properties
+                .getProperty("prefixRemoteAddress"));
     }
 
     /**
@@ -195,6 +200,20 @@ public class Config {
      */
     public void setServerPort(int serverPort) {
         this.serverPort = serverPort;
+    }
+
+    /**
+     * @return isPrefixRemoteAddress
+     */
+    public boolean isPrefixRemoteAddress() {
+        return isPrefixRemoteAddress;
+    }
+
+    /**
+     * @param isPrefixRemoteAddress isPrefixRemoteAddress
+     */
+    public void setPrefixRemoteAddress(boolean isPrefixRemoteAddress) {
+        this.isPrefixRemoteAddress = isPrefixRemoteAddress;
     }
 
 }
